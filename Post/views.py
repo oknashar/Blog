@@ -4,7 +4,7 @@ from .forms import PostForm
 # Create your views here.
 
 def all_post(request):
-    all_posts= Post.objects.all()
+    all_posts= Post.objects.filter(active = True)
     context = {
         'all_posts':all_posts,
     }
