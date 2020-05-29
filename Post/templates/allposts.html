@@ -1,6 +1,37 @@
-<h1>Welcome to my Blog</h1>
+{% extends "base.html" %}
+<!-- <h1>Welcome to my Blog</h1>
 <a href="{% url 'blog:create_post'  %}">Add New Post</a>
 
 {% for post in all_posts %}
     <h3> <a href=" {% url 'blog:post' post.id %}">{{ post.title}}</a> </h3>
-{% endfor %}
+{% endfor %} -->
+
+{% block body %}
+  
+     
+      <button type="button" class="btn btn-dark mr-4 float-right" ><a href="{% url 'blog:create_post' %}" style="color: white; text-decoration: none;" >Add Post</a></button>
+      <div class="container">
+        <div class="row mt-4">
+          {% for post in all_posts %}
+          <div class="col-md-4">
+
+            <div class="card">
+                {% if post.img %}
+                <img src="{{ post.img.url }}" class="card-img-top" alt="...">
+                {% endif %}
+
+                <div class="card-body">
+                  <h5 class="card-title">{{post.title}}</h5>
+                  <p class="card-text" >{{ post.content|safe|truncatewords:10}}</p>
+                  <a href="{% url 'blog:post' post.id %}" class="btn btn-primary">Know more</a>
+                </div>
+              </div>
+
+           </div> 
+           
+          {% endfor %}
+         
+        </div>
+      </div>
+
+      {% endblock body %}

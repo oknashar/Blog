@@ -55,4 +55,4 @@ def edit_post(request,id):
         'form': form ,
     }
 
-    return render(request,'create.html',context)
+    return render(request,'edit.html',context)
